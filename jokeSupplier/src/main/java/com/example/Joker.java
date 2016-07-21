@@ -12,7 +12,7 @@ public class Joker {
     jokeArray[4] = "Q: What did the DNA say to the other DNA? A: Do these genes make my butt look fat.";
     jokeArray[5] = "You may be a square, baby, but you're round in all the right places.";
     jokeArray[6] = "Q: What did the farmer use to make crop circles? A: A Protractor";
-    jokeArray[7] = "The worst thing you can hear when you’re wearing a bikini is \"Good for you!\"";
+    jokeArray[7] = "The worst thing you can hear when you're wearing a bikini is \"Good for you!\"";
     jokeArray[8] = "Can a kangaroo jump higher than a house? Of course, a house doesn’t jump at all.";
     jokeArray[9] = "Q: How do you find Will Smith in the snow? A: You look for his Fresh Prints";
   }

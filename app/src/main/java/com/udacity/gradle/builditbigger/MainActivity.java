@@ -7,6 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.Joker;
+
+import java.util.Random;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -40,7 +44,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        Joker joker = new Joker();
+        String aJoke = joker.getJoke(new Random().nextInt(1000));
+        Toast.makeText(this, aJoke, Toast.LENGTH_SHORT).show();
     }
 
 

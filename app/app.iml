@@ -83,6 +83,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
@@ -217,5 +218,6 @@
     <orderEntry type="library" exported="" name="play-services-places-9.2.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-9.2.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-analytics-9.2.1" level="project" />
+    <orderEntry type="module" module-name="jokeSupplier" exported="" />
   </component>
 </module>
