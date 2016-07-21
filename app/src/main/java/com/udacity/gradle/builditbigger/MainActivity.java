@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.Joker;
+import com.a2g.nd.jokesupplier.Joker;
 
 import java.util.Random;
 
