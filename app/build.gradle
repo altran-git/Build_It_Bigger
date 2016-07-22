@@ -27,6 +27,7 @@ dependencies {
 
     //Add project dependecy for java module (jokeSupplier)
     compile project(':jokeSupplier')
+    compile project(':jokeReceiver')
 }
 
 apply plugin: 'com.google.gms.google-services'

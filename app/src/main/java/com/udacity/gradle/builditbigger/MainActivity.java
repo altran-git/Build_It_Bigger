@@ -1,12 +1,13 @@
 package com.udacity.gradle.builditbigger;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.a2g.nd.jokereceiver.JokeActivityFragment;
 import com.a2g.nd.jokesupplier.Joker;
 
 import java.util.Random;
@@ -43,11 +44,12 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Obtains a joke from jokeSupplier and passes it to the jokeReceiver
     public void tellJoke(View view){
         Joker joker = new Joker();
         String aJoke = joker.getJoke(new Random().nextInt(1000));
-        Toast.makeText(this, aJoke, Toast.LENGTH_SHORT).show();
+
+        Intent intent = JokeActivityFragment.getJokeIntent(this, aJoke);
+        startActivity(intent);
     }
-
-
 }
