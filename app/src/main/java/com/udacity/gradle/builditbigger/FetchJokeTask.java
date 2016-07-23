@@ -1,11 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.a2g.nd.builditbigger.jokebackend.myJokeApi.MyJokeApi;
-import com.a2g.nd.jokereceiver.JokeActivityFragment;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -16,12 +13,16 @@ import java.io.IOException;
 /**
  * Created by ND on 7/22/2016.
  */
-class FetchJokeTask extends AsyncTask<Context, Void, String> {
+class FetchJokeTask extends AsyncTask<Void, Void, String> {
     private static MyJokeApi myApiService = null;
-    private Context mContext;
+    public AsyncResponse mDelegate = null;
+
+    public FetchJokeTask(AsyncResponse delegate) {
+        this.mDelegate = delegate;
+    }
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected String doInBackground(Void... params) {
         if(myApiService == null) {  // Only do this once
             MyJokeApi.Builder builder = new MyJokeApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -40,8 +41,6 @@ class FetchJokeTask extends AsyncTask<Context, Void, String> {
             myApiService = builder.build();
         }
 
-        mContext = params[0];
-
         try {
             return myApiService.getAJoke().execute().getJoke();
         } catch (IOException e) {
@@ -51,7 +50,10 @@ class FetchJokeTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = JokeActivityFragment.getJokeIntent(mContext, result);
-        mContext.startActivity(intent);
+        mDelegate.processFinish(result);
+    }
+
+    public interface AsyncResponse {
+        void processFinish(String result);
     }
 }
