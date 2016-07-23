@@ -17,7 +17,7 @@ public class Joker {
     jokeArray[9] = "Q: How do you find Will Smith in the snow?\nA: You look for his Fresh Prints";
   }
 
-  public String getJoke(int num){
+  public String getRandomJoke(int num){
     return jokeArray[num%10];
   }
 }

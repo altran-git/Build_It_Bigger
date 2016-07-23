@@ -24,8 +24,7 @@ dependencies {
     // Added for AdMob
     compile 'com.google.android.gms:play-services:9.2.1'
 
-    //Add project dependecy for java module (jokeSupplier & jokeReceiver)
-    compile project(':jokeSupplier')
+    //Add project dependecy for java module (jokeReceiver)
     compile project(':jokeReceiver')
 
     //Add for Backend

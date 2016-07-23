@@ -6,15 +6,16 @@
 
 package com.a2g.nd.builditbigger.jokebackend;
 
+import com.a2g.nd.jokesupplier.Joker;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
-import javax.inject.Named;
+import java.util.Random;
 
 /** An endpoint class we are exposing */
 @Api(
-  name = "myApi",
+  name = "myJokeApi",
   version = "v1",
   namespace = @ApiNamespace(
     ownerDomain = "jokebackend.builditbigger.nd.a2g.com",
@@ -22,15 +23,18 @@ import javax.inject.Named;
     packagePath=""
   )
 )
-public class MyEndpoint {
+public class MyJokeEndpoint {
 
-    /** A simple endpoint method that takes a name and says Hi back */
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
-        MyBean response = new MyBean();
-        response.setData("Hi, " + name);
+    /** A simple endpoint method that gets a joke */
+    @ApiMethod(name = "getAJoke")
+    public MyJoke getAJoke() {
+        Joker joker = new Joker();
+        String aJoke = joker.getRandomJoke(new Random().nextInt(1000));
 
-        return response;
+        MyJoke response = new MyJoke();
+        response.setJoke(aJoke);
+
+       return response;
     }
 
 }
