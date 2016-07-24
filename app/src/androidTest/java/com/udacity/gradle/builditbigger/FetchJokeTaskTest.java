@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by ND on 7/23/2016.
@@ -23,15 +24,15 @@ public class FetchJokeTaskTest {
 
     @Test
     public void FetchJokeTest() throws TimeoutException, InterruptedException, ExecutionException{
-        mFetchJokeTask = new FetchJokeTask(new FetchJokeTask.AsyncResponse() {
+        mFetchJokeTask = (FetchJokeTask) new FetchJokeTask(new FetchJokeTask.AsyncResponse() {
             @Override
             public void processFinish(String result) {
                 mResult = result;
+
+                //Test results != null or empty string
+                assertNotNull("Test Failed", mResult);
+                assertTrue("Test Failed", mResult.length() > 0);
             }
-        });
-
-        assertNotNull(mResult);
-
+        }).execute();
     }
-
 }
