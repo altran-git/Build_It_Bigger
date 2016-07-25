@@ -18,7 +18,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class MainActivityFragment extends Fragment {
-    private static final String LOG_TAG = MainActivityFragment.class.getSimpleName();
     private static final int JOKE_ACTIVITY_REQ_CODE = 0;
 
     InterstitialAd mInterstitialAd;
@@ -52,7 +51,7 @@ public class MainActivityFragment extends Fragment {
                         @Override
                         public void processFinish(String result) {
                             Intent intent = JokeActivityFragment.getJokeIntent(getActivity(), result);
-                            startActivity(intent);
+                            startActivityForResult(intent, JOKE_ACTIVITY_REQ_CODE);
                         }
                     }).execute();
                 }
