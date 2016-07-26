@@ -17,3 +17,17 @@ allprojects {
         jcenter()
     }
 }
+
+//This task 1. Launches GCE local dev server, 2. Runs tests, 3. Shuts down dev server
+task TestTask() {
+    dependsOn = [":jokeBackend:appengineRun", ":app:connectedCheck"]
+
+    //run appengineRun task in daemon mode so it allows the gradle process to continue
+    project(":jokeBackend").afterEvaluate { jokeBackend ->
+        jokeBackend.extensions.appengine.daemon = true
+    }
+
+    finalizedBy ":jokeBackend:appengineStop"
+}
+
+tasks.getByPath(':app:connectedCheck').mustRunAfter(":jokeBackend:appengineRun")
